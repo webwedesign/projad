@@ -8,7 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/bootflatv2/css/bootflat.css" rel="stylesheet">
+    <link href="assets/bootflatv2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
