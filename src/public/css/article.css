@@ -1,0 +1,27 @@
+.article {
+	height:208px;
+	width:190px;
+	background-color:#eaebec;
+}
+.article h5{
+	background-color:#3b3b3b;
+	color:#ffffff;
+	text-align:center;
+}
+.article .small{
+	font-size: 9px;
+	margin-left: 10px;
+	margin-bottom: 0;
+}
+.article del, .article del + sup{
+	font-size:13px;
+	font-family: Arial;
+}
+.article .prix{
+	color : rgb(255, 92, 0);
+	font-size : 22px;
+	font-weight: bold;
+}
+.article .row{
+	margin-left: -5px;
+}

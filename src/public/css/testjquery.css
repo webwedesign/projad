@@ -1,0 +1,32 @@
+.box {
+	background-color: purple;
+	margin:0 auto;
+	margin-top: 150px;
+	width:20px;
+	height:20px;
+}
+.btn {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.btn-navbar {
+	display: none;
+	float: right;
+	margin-right: 5px;
+    margin-left: 5px;
+}
+
+.icon-bar {
+	display: block;
+    width: 18px;
+    height: 3px;
+    background-color: #CECECE;
+    -webkit-border-radius: 1px; /* Ce sont des préfixes, pour que les navigateurs */
+    -moz-border-radius: 1px; /* prennent en charge les nouvelles propriétés. */
+       border-radius: 1px;
+}
+
+.icon-bar + .icon-bar { /* Le + permet de sélectionner les éléments qui suivent */
+	margin-top: 3px;
+}
