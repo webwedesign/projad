@@ -74,7 +74,7 @@ function connexionbdd()
 {
 	//Définition des variables de connexion à la base de données
 	$bd_nom_serveur='localhost';
-	$bd_login='root';
+	$bd_login='project';
 	$bd_mot_de_passe='0000';
 	$bd_nom_bd='espace_membre';
 
