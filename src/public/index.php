@@ -1,6 +1,10 @@
 <?php 
-    //require '../../vendor/autoload.php';
-   // require_once '../functions/calculatrice.php';
+    require '../../vendor/autoload.php';
+    require_once '../functions/calculatrice.php';
+    require_once '../functions/microtime.php';
+    require_once '../functions/generate_array.php';
+    require_once '../functions/algo_recherche_brut.php';
+    require_once '../functions/algo_recherche_dicho.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +27,8 @@
   </head>
   <body>
     <div class="container">
-        <h1><?php echo 'Hello world !!!'; ?></h1>
+    <?php var_dump($_POST);?>
+        <h1><?php echo 'Calculatrice !!!'; ?></h1>
         <form class="form-horizontal" action="" method="POST">
             <label>Calcul : </label>
             <input type="text" name="element1" value="<?= $element1;?>"> 
@@ -36,25 +41,32 @@
             <button type="submit" name="egal" value="submit">=</button>
             <span><?= $resultat; ?></span>
         </form>
+        <h1><?php echo 'Recherche !!!'; ?></h1>
+            <form action="" method="POST">
+                <input name="rangeLeft" type="text"> - 
+                <input name="rangeRight" type="text"><br>
+                <br>
+                <input name="number" type="text">
+                <button type="submit" name="search" value="submit">Recherche</button>
+            </form>     
+            <h2><?php echo 'Recherche BrutForce !!!'; ?></h2>
+            <p>On dit qu'un algorithme est de recherche par force brute lorsque toutes les entrées sont vérifiées une à une.</p>
+            <p>
+                Itération : <?php echo $iterateBrut;?><br>
+                Temps : <?php echo $timerBrut;?> ms
+            </p>
+            <h2><?php echo 'Recherche Dichotomique !!!'; ?></h2>
+            <p>La dichotomie (« couper en deux » en grec) est, en algorithmique, un processus itératif ou récursif de recherche où, à chaque étape, on coupe en deux parties (pas forcément égales) un espace de recherche qui devient restreint à l'une de ces deux parties.</p>
+            <p>
+                Itération : <?php echo $iterateDicho;?><br>
+                Temps : <?php echo $timerDicho;?> ms
+            </p>
    </div>
-   
-   <h1><?php echo 'Recherche!!! '?></h1>
-        <form action="" method="post" function ="./function/dicosearch.php">
-            <input name="rangeleft" type="text">
-            <input name="rangeright" type= "text">
-            <input name="number" type="text">
-            <button type="submit" name="search" value ="submit"> Recherche</button>
-        </form>
-    <h2><?php echo 'Recherche Bruteforce!!! '?></h2>
-        <p> La dichotomie ( couper en deux en grec) est blqlblqkboehcqd</p>
-        <p>
-            It�ration : <?php echo $iterateDicho;?>
-            nbre Test : <?php echo $numTestDicho;?>
-            Temps : <?php echo $timerBrut;?>
-    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/jquery/dist/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
+
+
