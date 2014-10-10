@@ -1,6 +1,6 @@
 <?php
 /*
-Neoterranos & LkY
+
 Page index.php
 
 Index du site.
@@ -60,11 +60,11 @@ include('../functions/haut.php'); //contient le doctype, et head.
 				<a href="index2.php">Accueil</a>
 			</div>
 			
-			<h1>Bienvenue sur mon super site !</h1>
-			<p>Ce site parlera de ... et est ouvert à tous.
-			Cependant, faut payer pour <a href="src/membres/inscription2.php">s'inscrire</a> mouhahaha !
+			<h1>Bouhouuuuuu !</h1>
+			<p>Ce site parlera de mon cul et est ouvert à tous.^^
+			Cependant, faut  <a href="membres/inscription2.php">s'inscrire</a> arf !
 			
-			Le Webmaster
+			Le doudou
 			</p>
 		</div>
 		</body>

@@ -58,7 +58,7 @@ include('../functions/haut.php'); //contient le doctype, et head.
 		<!--Contenu-->
 		<div id="contenu">
 			<div id="map">
-				<a href="../index2.php">Accueil</a> => <a href="membres/inscription2.php">Inscription 1/2</a>
+				<a href="../index2.php">Accueil</a> => <a href="../membres/inscription2.php">Inscription 1/2</a>
 			</div>
 			
 			<h1>Formulaire d'inscription</h1>
