@@ -20,9 +20,9 @@ Déjà inscrit (en cas de bug...)
 --------------------------
 */
 
-session_start();
+//session_start();
 header('Content-type: text/html; charset=utf-8');
-include('../functions/config.php');
+include('../../functions/config.php');
 
 /********Actualisation de la session...**********/
 
@@ -37,21 +37,19 @@ if(isset($_SESSION['membre_id']))
     header('Location: index2.php');
     exit();
 }
-?>
-<?php
+
 if($_SESSION['inscrit'] == $_POST['pseudo'] && trim($_POST['inscrit']) != '')
 {
     $informations = Array(/*Déjà inscrit (en cas de bug...)*/
                         true,
                         'Vous êtes déjà inscrit',
                         'Vous avez déjà complété une inscription avec le pseudo <span class="pseudo">'.htmlspecialchars($_SESSION['inscrit'], ENT_QUOTES).'</span>.',
-                        ' - <a href="'.ROOTPATH.'/index.php">Retourner à l\'index</a>',
-                        ROOTPATH.'/membres/connexion.php',);
+                        ' - <a href="'.ROOTPATH.'/index2.php">Retourner à l\'index</a>',
+                        ROOTPATH.'../membres/connexion.php',);
     require_once('../information.php');
     exit();
 }
-?>
-<?php
+
 function checkpseudo($pseudo)
 {
 	if($pseudo == '') return 'empty';
@@ -68,8 +66,7 @@ function checkpseudo($pseudo)
 		else return 'ok';
 	}
 }
-?>
-<?php
+
 function checkmdp($mdp)
 {
 	if($mdp == '') return 'empty';
@@ -83,15 +80,13 @@ function checkmdp($mdp)
 		else return 'ok';
 	}
 }
-?>
-<?php
+
 function checkmdpS($mdp, $mdp2)
 {
 	if($mdp != $mdp2 && $mdp != '' && $mdp2 != '') return 'different';
 	else return checkmdp($mdp);
 }
-?>
-<?php
+
 function checkmail($email)
 {
 	if($email == '') return 'empty';
@@ -107,15 +102,13 @@ function checkmail($email)
 		else return 'ok';
 	}
 }
-?>
-<?php
+
 function checkmailS($email, $email2)
 {
 	if($email != $email2 && $email != '' && $email2 != '') return 'different';
 	else return 'ok';
 }
-?>
-<?php
+
 function birthdate($date)
 {
 	if($date == '') return 'empty';
@@ -142,8 +135,7 @@ function birthdate($date)
 		}
 	}
 }
-?>
-<?php
+
 function vidersession()
 {
 	foreach($_SESSION as $cle => $element)
@@ -151,8 +143,7 @@ function vidersession()
 		unset($_SESSION[$cle]);
 	}
 }
-?>
-<?php 
+ 
 
 
 $_SESSION['erreurs'] = 0;
@@ -199,7 +190,7 @@ if(isset($_POST['pseudo']))
 
 else
 {
-    header('Location: ../index2.php');
+   // header('Location: ../index2.php');
     exit();
 }
 
@@ -439,19 +430,21 @@ unset($_SESSION['reponse1'], $_SESSION['reponse2'], $_SESSION['reponse3']);
 
 
 
+
 ?>
-<?php
+<!--fin-->
+<?php 
 /********Entête et titre de page*********/
 if($_SESSION['erreurs'] > 0) $titre = 'Erreur : Inscription 2/2';
 else $titre = 'Inscription 2/2';
 
-include('../functions/haut.php'); //contient le doctype, et head.
-
-/**********Fin entête et titre***********/
+include('functions/haut.php'); //contient le doctype, et head.
 ?>
+/**********Fin entête et titre***********/
+
 		<div id="colonne_gauche">
-		<?php
-		include('../functions/colg.php');
+	<?php 	
+		include('functions/colg.php');
 		?>
 		</div>
 		
@@ -460,4 +453,104 @@ include('../functions/haut.php'); //contient le doctype, et head.
 <!-- Absence de lien à Inscription 2/2 volontaire -->
 				<a href="../index2.php">Accueil</a> => Inscription 2/2
 			</div>
-?>
+
+<!--Test des erreurs et envoi-->
+			<?php
+			if($_SESSION['erreurs'] == 0)
+			{
+				$insertion = "INSERT INTO membres VALUES(NULL, '".mysql_real_escape_string($pseudo)."',
+				'".md5($mdp)."', '".mysql_real_escape_string($mail)."',
+				".time().", '".mysql_real_escape_string($date_naissance)."',
+				'', '',
+				'', '',
+				'', '',
+				'', '',
+				".time().", 0)";
+				
+				if(mysql_query($insertion))
+				{
+					$queries++;
+					vidersession();
+					$_SESSION['inscrit'] = $pseudo;
+					/*informe qu'il s'est déjà inscrit s'il actualise, si son navigateur
+					bugue avant l'affichage de la page et qu'il recharge la page, etc.*/
+			?>	
+			<h1>Inscription validée !</h1>
+			<p>Nous vous remercions de vous être inscrit sur notre site, votre inscription a été validée !<br/>
+			Vous pouvez vous connecter avec vos identifiants <a href="connexion.php">ici</a>.
+			</p>
+			<?php 	
+				}
+				
+				else
+				{
+					if(stripos(mysql_error(), $_SESSION['form_pseudo']) !== FALSE) // recherche du pseudo
+					{
+						unset($_SESSION['form_pseudo']);
+						$_SESSION['pseudo_info'] = '<span class="erreur">Le pseudo '.htmlspecialchars($pseudo, ENT_QUOTES).' est déjà pris, choisissez-en un autre.</span><br/>';
+						$_SESSION['erreurs']++;
+					}
+					
+					if(stripos(mysql_error(), $_SESSION['form_mail']) !== FALSE) //recherche du mail
+					{
+						unset($_SESSION['form_mail']);
+						unset($_SESSION['form_mail_verif']);
+						$_SESSION['mail_info'] = '<span class="erreur">Le mail '.htmlspecialchars($mail, ENT_QUOTES).' est déjà pris, <a href="../contact.php">contactez-nous</a> si vous pensez à une erreur.</span><br/>';
+						$_SESSION['mail_verif_info'] = str_replace('mail', 'mail de vérification', $_SESSION['mail_info']);
+						$_SESSION['erreurs']++;
+						$_SESSION['erreurs']++;
+					}
+					
+					if($_SESSION['erreurs'] == 0)
+					{
+						$sqlbug = true; //plantage SQL.
+						$_SESSION['erreurs']++;
+					}
+				}
+			}
+
+			if($_SESSION['erreurs'] > 0)
+			{
+				if($_SESSION['erreurs'] == 1) $_SESSION['nb_erreurs'] = '<span class="erreur">Il y a eu 1 erreur.</span><br/>';
+				else $_SESSION['nb_erreurs'] = '<span class="erreur">Il y a eu '.$_SESSION['erreurs'].' erreurs.</span><br/>';
+				?>
+			<h1>Inscription non validée.</h1>
+			<p>Vous avez rempli le formulaire d'inscription du site et nous vous en remercions, cependant, nous n'avons
+			pas pu valider votre inscription, en voici les raisons :<br/>
+			<?php 
+				echo $_SESSION['nb_erreurs'];
+				echo $_SESSION['pseudo_info'];
+				echo $_SESSION['mdp_info'];
+				echo $_SESSION['mdp_verif_info'];
+				echo $_SESSION['mail_info'];
+				echo $_SESSION['mail_verif_info'];
+				echo $_SESSION['date_naissance_info'];
+				echo $_SESSION['qcm_info'];
+				
+				
+				if($sqlbug !== true)
+				{
+				    ?>
+			Nous vous proposons donc de revenir à la page précédente pour corriger les erreurs. (Attention, que vous
+			l'ayez correctement remplie ou non, la partie sur la charte et l'image est à refaire intégralement.)</p>
+			<div class="center"><a href="inscription2.php">Retour</a></div>
+			<?php 
+				}
+				
+				else
+				{
+				    ?>
+			Une erreur est survenue dans la base de données, votre formulaire semble ne pas contenir d'erreurs, donc
+			il est possible que le problème vienne de notre côté, réessayez de vous inscrire ou contactez-nous.</p>
+			
+			<div class="center"><a href="inscription2.php">Retenter une inscription</a> - <a href="../contact.php">Contactez-nous</a></div>
+			<?php
+				}
+			}
+			?>
+		</div>
+
+		<?php
+		include('functions/bas.php');
+		mysql_close();
+		?>

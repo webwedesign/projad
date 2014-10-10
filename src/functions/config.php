@@ -19,7 +19,7 @@ Aucune information/erreur
 --------------------------
 */
 
-define('ROOTPATH', 'http://'.$_SERVER['HTTP_HOST'], true);
-define('TITRESITE', 'Mon site de test', true);
+defined ('ROOTPATH') or define('ROOTPATH', 'http://'.$_SERVER['HTTP_HOST'], true);
+defined ('TITRESITE') or define('TITRESITE', 'Mon site de test', true);
 $queries = 0;
 ?>

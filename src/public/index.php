@@ -1,10 +1,10 @@
 <?php 
     require '../../vendor/autoload.php';
-    require_once '../functions/calculatrice.php';
-    require_once '../functions/microtime.php';
-    require_once '../functions/generate_array.php';
-    require_once '../functions/algo_recherche_brut.php';
-    require_once '../functions/algo_recherche_dicho.php';
+    require_once 'functions/calculatrice.php';
+    require_once 'functions/microtime.php';
+    require_once 'functions/generate_array.php';
+    require_once 'functions/algo_recherche_brut.php';
+    require_once 'functions/algo_recherche_dicho.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

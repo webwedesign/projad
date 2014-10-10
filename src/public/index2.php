@@ -25,7 +25,7 @@ include('../functions/config.php');
 
 /********Actualisation de la session...**********/
 
-include('../functions/fonctions.php');
+include('functions/fonctions.php');
 connexionbdd();
 actualiser_session();
 

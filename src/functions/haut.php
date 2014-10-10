@@ -56,14 +56,14 @@ Aucune information/erreur
 			if(isset($_SESSION['membre_id']))
 			{
 			?>
-				<a href="../membres/moncompte.php">Gérer mon compte</a>   <a href="../membres/deconnexion.php">Se déconnecter</a>
+				<a href="membres/moncompte.php">Gérer mon compte</a>   <a href="membres/deconnexion.php">Se déconnecter</a>
 			<?php
 			}
 			
 			else
 			{
 			?>
-				<a href="../membres/inscription2.php">Inscription</a>   <a href="../membres/connexion.php">Connexion</a>
+				<a href="membres/inscription2.php">Inscription</a>   <a href="membres/connexion.php">Connexion</a>
 			<?php
 			}
 			?>

@@ -102,7 +102,7 @@ function actualiser_session()
 									'Session invalide',
 									'Le mot de passe de votre session est incorrect, vous devez vous reconnecter.',
 									'',
-									'../membres/connexion.php',
+									'membres/connexion.php',
 									3
 									);
 				require_once('../information.php');
@@ -140,7 +140,7 @@ function actualiser_session()
 											'Mot de passe cookie erroné',
 											'Le mot de passe conservé sur votre cookie est incorrect vous devez vous reconnecter.',
 											'',
-											'../membres/connexion.php',
+											'membres/connexion.php',
 											3
 											);
 						require_once('../information.php');

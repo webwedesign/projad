@@ -86,10 +86,8 @@ include('../functions/haut.php'); //contient le doctype, et head.
 					nous avons décidé de mettre en place un systèle de sécurité.<br/>
 					Aucun de ces systèmes n'est parfait, mais nous espérons que celui-ci, sans vous être inacessible sera suffisant
 					pour lutter contre ces robots.<br/>
-					Il est possible que certaines fois, l'image soit trop dure à lire ; le cas échéant, actualisez la page jusqu'à avoir une image lisible.<br/>
-					Si vous êtes dans l'incapacité de lire plusieurs images d'affilée, <a href="../contact.php">contactez-nous</a>, nous nous occuperons de votre inscription.</p>
-					<label for="captcha" class="float">Entrez les 8 caractères (majuscules ou chiffres) contenus dans l'image :</label> <input type="text" name="captcha" id="captcha"><br/>
-					<img src="captcha.php" />
+					
+					
 				</fieldset>
 				<div class="center"><input type="submit" value="Inscription2" /></div>
 			</form>
