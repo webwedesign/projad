@@ -1,6 +1,6 @@
 <?php
 /*
-Neoterranos & LkY
+
 Page config.php
 
 Deux define et la variable de queries.

@@ -19,4 +19,4 @@ Aucune information/erreur
 --------------------------
 */
 ?>
-<div>Hello World !</div>
+<div>Hello MotherF***er !</div>

@@ -5,7 +5,7 @@ Page fonctions.php
 
 Contient quelques fonctions globales.
 
-Quelques indications : (utiliser l'outil de recherche et rechercher les mentions donnÃ©es)
+Quelques indications : (utiliser l'outil de recherche et rechercher les mentions données)
 
 Liste des fonctions :
 --------------------------

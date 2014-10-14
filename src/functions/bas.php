@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-	<head>
 <?php
 /*
 
@@ -23,14 +20,12 @@ Aucune information/erreur
 */
 ?>
 
-	<meta charset="UTF-8">
-	<meta name="language" content="fr" />
-	<link rel="stylesheet" title="Design" href="/design.css" type="text/css" media="screen" />
-	</head>
+	
 	<body>
 		<div id="footer" >
 			Site réalisé par Webwedesign<br/>
 			<?php echo $queries; ?> requête(s).
 		</div>
 	</body>
-</html>
+</body>
+		</html>

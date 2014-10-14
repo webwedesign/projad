@@ -600,6 +600,7 @@
 					$_SESSION['inscrit'] = $pseudo;
 					/*informe qu'il s'est déjà inscrit s'il actualise, si son navigateur
 					bugue avant l'affichage de la page et qu'il recharge la page, etc.*/
+				}
 				?>
 			<h1>Inscription validée !</h1>
 			<p>Nous vous remercions de vous être inscrit sur notre site, votre inscription a été validée !<br/>
@@ -607,6 +608,6 @@
 			<?php echo $sent; ?>
 
 	<?php 
-		include('functions/bas.php');
+		include('../functions/bas.php');
 		mysql_close();
 		?>

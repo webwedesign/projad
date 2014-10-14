@@ -62,7 +62,7 @@ include('../functions/haut.php'); //contient le doctype, et head.
 			
 			<h1>Bouhouuuuuu !</h1>
 			<p>Ce site parlera de mon cul et est ouvert à tous.^^
-			Cependant, faut  <a href="membres/inscription2.php">s'inscrire</a> arf !
+			Cependant, faut  <a href="../membres/inscription2.php">s'inscrire</a> arf !
 			
 			Le doudou
 			</p>
