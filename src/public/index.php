@@ -1,75 +1,54 @@
 <?php
-/*
+require_once 'autoload.php';
+$session = Session::getInstance();
 
-Page index.php
+$db = new Db_Connection("mysql:host=localhost;dbname=project", "project", "0000");
 
-Index du site.
+$request = new Request;
+$manager = new Hero_Manager;
 
-Quelques indications : (utiliser l'outil de recherche et rechercher les mentions données)
+if($request->isPost()){
+	$data = $request->getPost();
+	$classHero = "Hero_" . $data['class'];
+	if(!empty($data['hero'])){
+		$hero = new $classHero($data['hero']);
+		$session->hero = $hero;	
+		$manager->save($hero);
+	}
+}
 
-Liste des fonctions :
---------------------------
-Aucune fonction
---------------------------
-
-
-Liste des informations/erreurs :
---------------------------
-Aucune information/erreur
---------------------------
-*/
-
-session_start();
-header('Content-type: text/html; charset=utf-8');
-include('../functions/config.php');
-
-/********Actualisation de la session...**********/
-
-include('functions/fonctions.php');
-connexionbdd();
-actualiser_session();
-
-/********Fin actualisation de session...**********/
-
-/********Entête et titre de page*********/
-
-$titre = 'Inscription';
-
-include('../functions/haut.php'); //contient le doctype, et head.
-
-/**********Fin entête et titre***********/
 ?>
-
-		<div id="colonne_gauche">
-		<?php
-		include('../functions/colg.php');
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hero</title>
+</head>
+<body>
+	<div>
+		<form method="POST">
+			<label for="name"> Pseudo : <input id="name" type="text" name="hero"></label>
+			<label for="class"> Classes : 
+				<select name="class" id="class">
+					<option>Rogue</option>
+					<option>Tank</option>
+					<option>Healer</option>
+				</select>
+			</label>
+			<button type="submit">Lancer</button>
+		</form>
+		<?php 
+			if(isset($session->hero)){
+				$hero = $session->hero;
+				echo $hero;
+				$reflection = new ReflectionClass($hero);
+				$reflectionMethods = $reflection->getMethods();
+				foreach ($reflectionMethods as $reflectionMethod) {
+					var_dump($reflectionMethod->getName());
+					var_dump($reflectionMethod->isPublic());
+				}
+				
+			}
 		?>
-		<html>
-	<head>
-		<title><?php echo $informations[1]; ?> : <?php echo TITRESITE; ?></title>
-		<meta  charset="UTF-8" />
-		<meta name="language" content="fr" />
-		
-		<link rel="stylesheet" title="Design" href="css/design.css" type="text/css" media="screen" />
-	</head>
-	<body></body>
-		</div>
-		
-		<div id="contenu">
-			<div id="map">
-				<a href="index.php">Accueil</a>
-			</div>
-			
-			<h1>IP-FORMATION</h1>
-			<p>Bienvenue sur le site de presence d'IP formation
-			Si cela n'est pas fait, veuillez  vous <a href="../users/inscription.php">inscrire</a> arf !
-			
-			Doudou Direction
-			</p>
-		</div>
-		</body>
-		</html>
-		<?php
-		include('../functions/bas.php');
-		mysql_close();
-		?>
+	</div>
+</body>
+</html>

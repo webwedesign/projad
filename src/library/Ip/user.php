@@ -1,6 +1,6 @@
 <?php
 
-abstract class Hero {
+abstract class User {
 	
 	protected $helper;
 
