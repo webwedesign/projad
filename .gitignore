@@ -4,3 +4,6 @@
 /.buildpath
 /composer.lock
 /vendor/
+/Vagrantfile
+/README.md
+/LICENCE.md
