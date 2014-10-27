@@ -20,6 +20,6 @@ function csv_admin_settings_submit($form, &$form_state) {
   unset($form_state['values']['file']);
   $file->status = FILE_STATUS_PERMANENT;
   file_save($file);
-  drupal_set_message(t('Le fichier Ã  bien Ã©tÃ© enregistrÃ©', array('@filename' => $file->filename)));
+  drupal_set_message(t('Le fichier Ã  bien été enregistré', array('@filename' => $file->filename)));
 }
 ?>
