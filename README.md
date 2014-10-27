@@ -1,5 +1,5 @@
-# PROJET pointeuse
-## Développement PHP procedural d'un outil de presence pour ip formation
+# PROJET projad
+## Développement PHP  d'un outil d'ajout de donnée en CRUD
 
 ### Technologie employées
 - PHP

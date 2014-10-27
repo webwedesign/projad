@@ -1,1 +1,1 @@
-#Licenced By WEBWEDESIGN and DevEristoff fr
+#Licenced By WEBWEDESIGN fr
